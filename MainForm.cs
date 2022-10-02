@@ -6,49 +6,83 @@ namespace CardMonthlyPay
     public partial class MainForm : Form
     {
         // DATA
-        private static int TotalMoney = 0; // 0 - 7000
-        private static int MaxMoneyMonth = 0; // 0 - 7000
+        private static double TotalCurrentMoney = 0; // 0 - 7000
+        private static double MaxMoneyMonth = 0; // 0 - 7000
         private static int PayDay = 1; // 1 - 15 (DD.mm.yyyy)
 
-        private static int DaysInThisMonth;
-        private static int MaxMoneyDay;
-        private static int MaxForCurrentDay;
+        private static int DaysInMonth;
+        private static double MaxMoneyPerDay;
+        private static double MaxMoneyUntilCurrentDay;
 
         public MainForm()
         {
             InitializeComponent();
-            DaysInThisMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            DaysInMonth = 30;
+            Console.WriteLine("[INFO] Days in this month: " + DaysInMonth);
         }
 
         private void NumCurrentMoney_ValueChanged(object sender, EventArgs e)
         {
-            TotalMoney = (int)NumCurrentMoney.Value;
-            if (TotalMoney != 0 && MaxMoneyMonth != 0 && PayDay != 0)
+            Console.WriteLine("\n-----------\n");
+            TotalCurrentMoney = (int)NumCurrentMoney.Value;
+            if (TotalCurrentMoney != 0 && MaxMoneyMonth != 0 && PayDay != 0)
             {
-                MaxMoneyDay = MaxMoneyMonth / DaysInThisMonth;
-                MaxForCurrentDay = (((int)(DateTime.Now - LastDateWithDay(PayDay)).TotalDays)) * MaxMoneyDay; // days passed
-                if (TotalMoney > MaxForCurrentDay)
-                {
-                    PBLow.Value = 100;
-                    PBMedium.Value = 100;
-                    PBHigh.Value = 20;
+                DateTime lastDateWithDay = LastDateWithDay(PayDay);
 
-                }
+                Console.WriteLine("[INFO] Last date with day: " + lastDateWithDay.ToString("dd/MM/yyyy"));
+                MaxMoneyPerDay = MaxMoneyMonth / DaysInMonth;
+                Console.WriteLine("[INFO] Max money per day: " + MaxMoneyPerDay);
+                MaxMoneyUntilCurrentDay = (int)(DateTime.Now - lastDateWithDay).TotalDays * MaxMoneyPerDay;
+                Console.WriteLine("[INFO] Max money until current day: " + MaxMoneyUntilCurrentDay);
+
+                SetBars(CalcPercentage(TotalCurrentMoney, MaxMoneyUntilCurrentDay));
             }
         }
+
+        /*
+         *      100             200             300
+         * [PROGRESS BAR 1][PROGRESS BAR 2][PROGRESS BAR 3]
+         *      LOW            MEDIUM           HIGH
+         */
+        public int CalcPercentage(double totalWastedMoneyForToday, double maxAllowedMoneyForToday)
+        {
+            if (maxAllowedMoneyForToday <= 0)
+                return 0;
+            int p;
+            p = (int)(200 * (totalWastedMoneyForToday * 100.0 / maxAllowedMoneyForToday / 100.0)); // 0 - 300
+            Console.WriteLine("[INFO] " + p + "%");
+            return p > 300 ? 300 : p;
+        }
+
+        public void SetBars(int percent)
+        {
+            if (percent <= 100)
+            {
+                PBGreat.Value = percent;
+                PBOk.Value = 0;
+                PBBad.Value = 0;
+            }
+            else if (percent <= 200)
+            {
+                PBGreat.Value = 100;
+                PBOk.Value = percent - 100;
+                PBBad.Value = 0;
+            }
+            else if (percent <= 300)
+            {
+                PBGreat.Value = 100;
+                PBOk.Value = 100;
+                PBBad.Value = percent - 200;
+            }
+        }
+
         public DateTime LastDateWithDay(int DayNumber)
         {
             DateTime now = DateTime.Now;
-            
-            if (now.Day >= DayNumber)
-                return new DateTime(now.Year, now.Month, DayNumber);
-            else
-            {
-                if (now.Month == 1)
-                    return new DateTime(now.Year - 1, 12, DayNumber);
-                else
-                    return new DateTime(now.Year, now.Month - 1, DayNumber);
-            }
+
+            return now.Day >= DayNumber
+                ? new DateTime(now.Year, now.Month, DayNumber)
+                : now.Month == 1 ? new DateTime(now.Year - 1, 12, DayNumber) : new DateTime(now.Year, now.Month - 1, DayNumber);
         }
 
         public static void NumMaxMoney_ValueChanged(object sender, EventArgs e)
