@@ -110,7 +110,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Settings";
             this.Text = "Settings";
-            this.Load += new System.EventHandler(this.Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumPayDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumMaxMoney)).EndInit();
             this.ResumeLayout(false);
