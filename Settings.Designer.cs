@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(216, 149);
+            this.ClientSize = new System.Drawing.Size(216, 146);
             this.Controls.Add(this.LabelPayDay);
             this.Controls.Add(this.LabelMaxWaste);
             this.Controls.Add(this.NumMaxMoney);

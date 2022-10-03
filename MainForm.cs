@@ -10,27 +10,28 @@ namespace CardMonthlyPay
         private static double MaxMoneyMonth = 0; // 0 - 7000
         private static int PayDay = 1; // 1 - 15 (DD.mm.yyyy)
 
-        private static int DaysInMonth;
+        private const int MONTH_DAYS = 30;
         private static double MaxMoneyPerDay;
         private static double MaxMoneyUntilCurrentDay;
 
         public MainForm()
         {
             InitializeComponent();
-            DaysInMonth = 30;
-            Console.WriteLine("[INFO] Days in this month: " + DaysInMonth);
         }
 
         private void NumCurrentMoney_ValueChanged(object sender, EventArgs e)
         {
+            Properties.Settings.Default.CurrentTotal = (double)NumCurrentMoney.Value;
+            Properties.Settings.Default.Save();
+
             Console.WriteLine("\n-----------\n");
             TotalCurrentMoney = (int)NumCurrentMoney.Value;
-            if (TotalCurrentMoney != 0 && MaxMoneyMonth != 0 && PayDay != 0)
+            if (TotalCurrentMoney != 0 && MaxMoneyMonth != 0 && PayDay != 0) // check if all have some value
             {
                 DateTime lastDateWithDay = LastDateWithDay(PayDay);
 
                 Console.WriteLine("[INFO] Last date with day: " + lastDateWithDay.ToString("dd/MM/yyyy"));
-                MaxMoneyPerDay = MaxMoneyMonth / DaysInMonth;
+                MaxMoneyPerDay = MaxMoneyMonth / MONTH_DAYS;
                 Console.WriteLine("[INFO] Max money per day: " + MaxMoneyPerDay);
                 MaxMoneyUntilCurrentDay = (int)(DateTime.Now - lastDateWithDay).TotalDays * MaxMoneyPerDay;
                 Console.WriteLine("[INFO] Max money until current day: " + MaxMoneyUntilCurrentDay);
@@ -88,11 +89,15 @@ namespace CardMonthlyPay
         public static void NumMaxMoney_ValueChanged(object sender, EventArgs e)
         {
             MaxMoneyMonth = (int)((NumericUpDown)sender).Value;
+            Properties.Settings.Default.MaxMoney = MaxMoneyMonth;
+            Properties.Settings.Default.Save();
         }
 
         public static void NumPayDay_ValueChanged(object sender, EventArgs e)
         {
             PayDay = (int)((NumericUpDown)sender).Value;
+            Properties.Settings.Default.PayDay = PayDay;
+            Properties.Settings.Default.Save();
         }
 
         private void ButtonSettings_Click(object sender, EventArgs e)
@@ -123,7 +128,12 @@ namespace CardMonthlyPay
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            NumCurrentMoney.Value = (decimal)Properties.Settings.Default.CurrentTotal;
+            TotalCurrentMoney = Properties.Settings.Default.CurrentTotal;
 
+            MaxMoneyMonth = Properties.Settings.Default.MaxMoney;
+
+            PayDay = Properties.Settings.Default.PayDay;
         }
     }
 }

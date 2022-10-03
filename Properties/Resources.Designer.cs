@@ -63,9 +63,9 @@ namespace CardMonthlyPay.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap settings_48px {
+        internal static System.Drawing.Bitmap settings_38px {
             get {
-                object obj = ResourceManager.GetObject("settings_48px", resourceCulture);
+                object obj = ResourceManager.GetObject("settings_38px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -26,9 +26,9 @@ namespace CardMonthlyPay.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int MaxMoney {
+        public double MaxMoney {
             get {
-                return ((int)(this["MaxMoney"]));
+                return ((double)(this["MaxMoney"]));
             }
             set {
                 this["MaxMoney"] = value;
@@ -37,7 +37,7 @@ namespace CardMonthlyPay.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int PayDay {
             get {
                 return ((int)(this["PayDay"]));
@@ -50,9 +50,9 @@ namespace CardMonthlyPay.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int CurrentTotal {
+        public double CurrentTotal {
             get {
-                return ((int)(this["CurrentTotal"]));
+                return ((double)(this["CurrentTotal"]));
             }
             set {
                 this["CurrentTotal"] = value;

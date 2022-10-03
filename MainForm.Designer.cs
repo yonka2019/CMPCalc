@@ -109,10 +109,10 @@
             // 
             // ButtonSettings
             // 
-            this.ButtonSettings.Image = global::CardMonthlyPay.Properties.Resources.settings_48px;
-            this.ButtonSettings.Location = new System.Drawing.Point(440, 126);
+            this.ButtonSettings.Image = global::CardMonthlyPay.Properties.Resources.settings_38px;
+            this.ButtonSettings.Location = new System.Drawing.Point(450, 136);
             this.ButtonSettings.Name = "ButtonSettings";
-            this.ButtonSettings.Size = new System.Drawing.Size(50, 50);
+            this.ButtonSettings.Size = new System.Drawing.Size(40, 40);
             this.ButtonSettings.TabIndex = 10;
             this.tpMain.SetToolTip(this.ButtonSettings, "Open Settings");
             this.ButtonSettings.UseVisualStyleBackColor = true;
