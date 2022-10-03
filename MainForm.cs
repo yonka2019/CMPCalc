@@ -96,7 +96,7 @@ namespace CardMonthlyPay
         public static void NumPayDay_ValueChanged(object sender, EventArgs e)
         {
             PayDay = (int)((NumericUpDown)sender).Value;
-            Properties.Settings.Default.PayDay = PayDay;
+            Properties.Settings.Default.PayDay = PayDay - 1;
             Properties.Settings.Default.Save();
         }
 
