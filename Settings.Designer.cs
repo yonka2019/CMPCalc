@@ -54,6 +54,7 @@
             this.NumPayDay.Name = "NumPayDay";
             this.NumPayDay.Size = new System.Drawing.Size(120, 35);
             this.NumPayDay.TabIndex = 0;
+            this.NumPayDay.TabStop = false;
             this.NumPayDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.NumPayDay.Value = new decimal(new int[] {
             1,
@@ -73,6 +74,7 @@
             this.NumMaxMoney.Name = "NumMaxMoney";
             this.NumMaxMoney.Size = new System.Drawing.Size(120, 35);
             this.NumMaxMoney.TabIndex = 1;
+            this.NumMaxMoney.TabStop = false;
             this.NumMaxMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // LabelMaxWaste
@@ -108,6 +110,7 @@
             this.Controls.Add(this.NumPayDay);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Settings";
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.NumPayDay)).EndInit();

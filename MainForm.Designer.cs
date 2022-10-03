@@ -93,6 +93,7 @@
             this.NumCurrentMoney.Name = "NumCurrentMoney";
             this.NumCurrentMoney.Size = new System.Drawing.Size(97, 33);
             this.NumCurrentMoney.TabIndex = 11;
+            this.NumCurrentMoney.TabStop = false;
             this.NumCurrentMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.NumCurrentMoney.ValueChanged += new System.EventHandler(this.NumCurrentMoney_ValueChanged);
             // 
@@ -114,6 +115,7 @@
             this.ButtonSettings.Name = "ButtonSettings";
             this.ButtonSettings.Size = new System.Drawing.Size(40, 40);
             this.ButtonSettings.TabIndex = 10;
+            this.ButtonSettings.TabStop = false;
             this.tpMain.SetToolTip(this.ButtonSettings, "Open Settings");
             this.ButtonSettings.UseVisualStyleBackColor = true;
             this.ButtonSettings.Click += new System.EventHandler(this.ButtonSettings_Click);
@@ -168,6 +170,7 @@
             this.Controls.Add(this.PBGreat);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "MCP Calculation";
             this.Load += new System.EventHandler(this.MainForm_Load);
