@@ -24,17 +24,17 @@ namespace CardMonthlyPay
             Properties.Settings.Default.CurrentTotal = (double)NumCurrentMoney.Value;
             Properties.Settings.Default.Save();
 
-            Console.WriteLine("\n-----------\n");
+            //Console.WriteLine("\n-----------\n");
             TotalCurrentMoney = (int)NumCurrentMoney.Value;
             if (TotalCurrentMoney != 0 && MaxMoneyMonth != 0 && PayDay != 0) // check if all have some value
             {
                 DateTime lastDateWithDay = LastDateWithDay(PayDay);
 
-                Console.WriteLine("[INFO] Last date with day: " + lastDateWithDay.ToString("dd/MM/yyyy"));
+                //Console.WriteLine("[INFO] Last date with day: " + lastDateWithDay.ToString("dd/MM/yyyy"));
                 MaxMoneyPerDay = MaxMoneyMonth / MONTH_DAYS;
-                Console.WriteLine("[INFO] Max money per day: " + MaxMoneyPerDay);
+                //Console.WriteLine("[INFO] Max money per day: " + MaxMoneyPerDay);
                 MaxMoneyUntilCurrentDay = (int)(DateTime.Now - lastDateWithDay).TotalDays * MaxMoneyPerDay;
-                Console.WriteLine("[INFO] Max money until current day: " + MaxMoneyUntilCurrentDay);
+                //Console.WriteLine("[INFO] Max money until current day: " + MaxMoneyUntilCurrentDay);
 
                 SetBars(CalcPercentage(TotalCurrentMoney, MaxMoneyUntilCurrentDay));
             }
@@ -51,7 +51,7 @@ namespace CardMonthlyPay
                 return 0;
             int p;
             p = (int)(200 * (totalWastedMoneyForToday * 100.0 / maxAllowedMoneyForToday / 100.0)); // 0 - 300
-            Console.WriteLine("[INFO] " + p + "%");
+            //Console.WriteLine("[INFO] " + p + "%");
             return p > 300 ? 300 : p;
         }
 
