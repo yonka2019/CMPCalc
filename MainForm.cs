@@ -24,8 +24,13 @@ namespace CardMonthlyPay
             Properties.Settings.Default.CurrentTotal = (double)NumCurrentMoney.Value;
             Properties.Settings.Default.Save();
 
+            SetData();
+        }
+        private void SetData()
+        {
             //Console.WriteLine("\n-----------\n");
             TotalCurrentMoney = (int)NumCurrentMoney.Value;
+
             if (TotalCurrentMoney != 0 && MaxMoneyMonth != 0 && PayDay != 0) // check if all have some value
             {
                 DateTime lastDateWithDay = LastDateWithDay(PayDay);
@@ -39,6 +44,7 @@ namespace CardMonthlyPay
                 SetBars(CalcPercentage(TotalCurrentMoney, MaxMoneyUntilCurrentDay));
             }
         }
+
 
         /*
          *      100             200             300
@@ -134,6 +140,8 @@ namespace CardMonthlyPay
             MaxMoneyMonth = Properties.Settings.Default.MaxMoney;
 
             PayDay = Properties.Settings.Default.PayDay;
+
+            SetData();
         }
     }
 }
