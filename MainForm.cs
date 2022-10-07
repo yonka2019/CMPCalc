@@ -33,9 +33,9 @@ namespace CardMonthlyPay
 
             if (TotalCurrentMoney != 0 && MaxMoneyMonth != 0 && PayDay != 0) // check if all have some value
             {
-                DateTime lastDateWithDay = LastDateWithDay(PayDay);
+                DateTime lastDateWithDay = LastDateWithDay(PayDay - 1);
 
-                //Console.WriteLine("[INFO] Last date with day: " + lastDateWithDay.ToString("dd/MM/yyyy"));
+                Console.WriteLine("[INFO] Last date with day: " + lastDateWithDay.ToString("dd/MM/yyyy"));
                 MaxMoneyPerDay = MaxMoneyMonth / MONTH_DAYS;
                 //Console.WriteLine("[INFO] Max money per day: " + MaxMoneyPerDay);
                 MaxMoneyUntilCurrentDay = (int)(DateTime.Now - lastDateWithDay).TotalDays * MaxMoneyPerDay;
@@ -102,7 +102,7 @@ namespace CardMonthlyPay
         public static void NumPayDay_ValueChanged(object sender, EventArgs e)
         {
             PayDay = (int)((NumericUpDown)sender).Value;
-            Properties.Settings.Default.PayDay = PayDay - 1;
+            Properties.Settings.Default.PayDay = PayDay;
             Properties.Settings.Default.Save();
         }
 

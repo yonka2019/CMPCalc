@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C1D9CEB0-8563-4863-9BE4-92DBDB4B092E}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>CardMonthlyPay</RootNamespace>
     <AssemblyName>CardMonthlyPay</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
