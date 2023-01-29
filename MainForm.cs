@@ -51,18 +51,23 @@ namespace CardMonthlyPay
          * [PROGRESS BAR 1][PROGRESS BAR 2][PROGRESS BAR 3]
          *      LOW            MEDIUM           HIGH
          */
-        public int CalcPercentage(double totalWastedMoneyForToday, double maxAllowedMoneyForToday)
+        public int CalcPercentage(double totalWastedMoneyTillToday, double maxAllowedMoneyTillToday)
         {
-            if (maxAllowedMoneyForToday <= 0)
+            if (maxAllowedMoneyTillToday <= 0)
                 return 0;
+
             int p;
-            p = (int)(200 * (totalWastedMoneyForToday * 100.0 / maxAllowedMoneyForToday / 100.0)); // 0 - 300
+            p = (int)(200 * (totalWastedMoneyTillToday / maxAllowedMoneyTillToday)); // 0 - 300
             //Console.WriteLine("[INFO] " + p + "%");
             return p > 300 ? 300 : p;
         }
 
         public void SetBars(int percent)
         {
+            GreatValue.Text = ((int)(0.5 * MaxMoneyUntilCurrentDay)).ToString();
+            OKValue.Text = ((int)(1 * MaxMoneyUntilCurrentDay)).ToString();
+            BadValue.Text = ((int)(1.5 * MaxMoneyUntilCurrentDay)).ToString();
+
             if (percent <= 100)
             {
                 PBGreat.Value = percent;

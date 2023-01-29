@@ -41,6 +41,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.GreatValue = new System.Windows.Forms.Label();
+            this.OKValue = new System.Windows.Forms.Label();
+            this.BadValue = new System.Windows.Forms.Label();
+            this.ZeroLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NumCurrentMoney)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,10 +60,10 @@
             // LabelMain
             // 
             this.LabelMain.AutoSize = true;
-            this.LabelMain.Font = new System.Drawing.Font("Open Sans", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelMain.Location = new System.Drawing.Point(57, 9);
+            this.LabelMain.Font = new System.Drawing.Font("Open Sans", 12F);
+            this.LabelMain.Location = new System.Drawing.Point(136, 9);
             this.LabelMain.Name = "LabelMain";
-            this.LabelMain.Size = new System.Drawing.Size(389, 39);
+            this.LabelMain.Size = new System.Drawing.Size(231, 23);
             this.LabelMain.TabIndex = 1;
             this.LabelMain.Text = "Monthly Card Pay Calculation";
             // 
@@ -84,7 +88,7 @@
             // NumCurrentMoney
             // 
             this.NumCurrentMoney.Font = new System.Drawing.Font("Open Sans", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NumCurrentMoney.Location = new System.Drawing.Point(203, 145);
+            this.NumCurrentMoney.Location = new System.Drawing.Point(203, 167);
             this.NumCurrentMoney.Maximum = new decimal(new int[] {
             7000,
             0,
@@ -101,7 +105,7 @@
             // 
             this.LabelTotal.AutoSize = true;
             this.LabelTotal.Font = new System.Drawing.Font("Open Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelTotal.Location = new System.Drawing.Point(201, 120);
+            this.LabelTotal.Location = new System.Drawing.Point(201, 142);
             this.LabelTotal.Name = "LabelTotal";
             this.LabelTotal.Size = new System.Drawing.Size(104, 22);
             this.LabelTotal.TabIndex = 12;
@@ -111,7 +115,7 @@
             // ButtonSettings
             // 
             this.ButtonSettings.Image = global::CardMonthlyPay.Properties.Resources.settings_38px;
-            this.ButtonSettings.Location = new System.Drawing.Point(450, 136);
+            this.ButtonSettings.Location = new System.Drawing.Point(450, 158);
             this.ButtonSettings.Name = "ButtonSettings";
             this.ButtonSettings.Size = new System.Drawing.Size(40, 40);
             this.ButtonSettings.TabIndex = 10;
@@ -153,11 +157,55 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Bad";
             // 
+            // GreatValue
+            // 
+            this.GreatValue.Font = new System.Drawing.Font("Ubuntu", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GreatValue.Location = new System.Drawing.Point(140, 107);
+            this.GreatValue.Name = "GreatValue";
+            this.GreatValue.Size = new System.Drawing.Size(61, 19);
+            this.GreatValue.TabIndex = 16;
+            this.GreatValue.Text = "0";
+            this.GreatValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // OKValue
+            // 
+            this.OKValue.Font = new System.Drawing.Font("Ubuntu", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OKValue.Location = new System.Drawing.Point(302, 107);
+            this.OKValue.Name = "OKValue";
+            this.OKValue.Size = new System.Drawing.Size(61, 19);
+            this.OKValue.TabIndex = 17;
+            this.OKValue.Text = "0";
+            this.OKValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BadValue
+            // 
+            this.BadValue.Font = new System.Drawing.Font("Ubuntu", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BadValue.Location = new System.Drawing.Point(429, 107);
+            this.BadValue.Name = "BadValue";
+            this.BadValue.Size = new System.Drawing.Size(61, 19);
+            this.BadValue.TabIndex = 18;
+            this.BadValue.Text = "0";
+            this.BadValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ZeroLabel
+            // 
+            this.ZeroLabel.Font = new System.Drawing.Font("Ubuntu", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ZeroLabel.Location = new System.Drawing.Point(8, 107);
+            this.ZeroLabel.Name = "ZeroLabel";
+            this.ZeroLabel.Size = new System.Drawing.Size(61, 19);
+            this.ZeroLabel.TabIndex = 20;
+            this.ZeroLabel.Text = "0";
+            this.ZeroLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 188);
+            this.ClientSize = new System.Drawing.Size(502, 210);
+            this.Controls.Add(this.ZeroLabel);
+            this.Controls.Add(this.BadValue);
+            this.Controls.Add(this.OKValue);
+            this.Controls.Add(this.GreatValue);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -193,6 +241,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label GreatValue;
+        private System.Windows.Forms.Label OKValue;
+        private System.Windows.Forms.Label BadValue;
+        private System.Windows.Forms.Label ZeroLabel;
     }
 }
 
