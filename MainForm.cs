@@ -33,7 +33,7 @@ namespace CardMonthlyPay
 
             if (TotalCurrentMoney != 0 && MaxMoneyMonth != 0 && PayDay != 0) // check if all have some value
             {
-                DateTime lastDateWithDay = LastDateWithDay(PayDay - 1);
+                DateTime lastDateWithDay = LastDateWithDay(PayDay) - new TimeSpan(1, 0, 0, 0);
 
                 //Console.WriteLine("[INFO] Last date with day: " + lastDateWithDay.ToString("dd/MM/yyyy"));
                 MaxMoneyPerDay = MaxMoneyMonth / MONTH_DAYS;
@@ -88,6 +88,10 @@ namespace CardMonthlyPay
             }
         }
 
+        /// <summary>
+        /// get last date with the given pay day number in order to count the days which gone after LAST pay
+        /// Example: [12 days after last pay, each day allowed - 100$, max good number for now is: 12 * 100 = 1200$
+        /// </summary>
         public DateTime LastDateWithDay(int DayNumber)
         {
             DateTime now = DateTime.Now;
